@@ -1,0 +1,301 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    font-family: 'Inconsolata', Monaco, "Lucida Console", Consolas, "Courier New";
+}
+
+
+.clr {
+    clear: both;
+}
+
+#notes {
+    width: 25%;
+    float: left;
+    font-family: "Mercury SSm A", "Mercury SSm B";
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.4em;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+#notes h1 {
+    font-family: 'Inconsolata', Monaco, "Lucida Console", Consolas, "Courier New";
+    font-size: 24px;
+    font-style: normal;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#notes p {
+    margin-bottom: 20px;
+    background: #fff;
+    text-align: center;
+}
+
+#demographics {
+    width: 80%;
+    height: 600px;
+    font-family: 'Inconsolata', Monaco, "Lucida Console", Consolas, "Courier New";
+    font-style: normal;
+    background: #fff;
+    padding: 6px 6px 0px 6px;
+    border: 1px solid #000;
+    margin: 10px auto 0 auto;
+}
+
+#demographics #education {
+    width: 100%;
+    font-size: 13px;
+    float: left;
+    margin-bottom: 15px;
+    /*vertical-align: middle;*/
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#demographics #race {
+}
+
+#demographics #race .column {
+    float: left;
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+
+h3 {
+    text-transform: uppercase;
+    font-size: 15px;
+    border-bottom: 2px solid #ccc;
+    padding: 3px 0px;
+    margin-bottom: 3px;
+    text-align: center;
+}
+
+.button {
+    width: 100%;
+    padding: 4px 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.button:hover {
+    background: #e0e0e0;
+}
+
+.button.current {
+    background: #444;
+    color: #fff;
+}
+
+.right {
+    width: 75%;
+    float: left;
+}
+
+#chart {
+    margin-bottom: 20px;
+}
+
+.chart-line {
+    width: 100%;
+}
+
+svg {
+    font: 14px 'Inconsolata', Monaco, "Lucida Console", Consolas, "Courier New";
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-size: 14px;
+}
+
+.y.axis path {
+    display: none;
+}
+
+.y.axis line {
+    stroke: #e0e0e0;
+}
+
+path.domain {
+    stroke-width: 2px;
+}
+
+path.line {
+    fill: none;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke-width: 3px;
+}
+
+path.male {
+    stroke: #fe7805;
+}
+
+path.female {
+    stroke: #4AC2BC;
+}
+
+.baseline line {
+    stroke: #000;
+    stroke-width: 3px;
+}
+
+line.annotation {
+    stroke: #ccc;
+    stroke-dasharray: 5, 2;
+    stroke-width: 1.2px;
+}
+
+text.annotation, #line-chart .agehighlight text {
+    font-family: 'Inconsolata', Monaco, "Lucida Console", Consolas, "Courier New";
+    font-size: 14px;
+    fill: #444;
+    text-anchor: end;
+}
+
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+
+.focus.bin line {
+    stroke-width: 1px;
+    stroke: #e0e0e0;
+}
+
+.focus.student circle {
+    fill: #F98229;
+    stroke: #000;
+}
+
+.focus.parent circle {
+    fill: #4AC2BC;
+    stroke: #000;
+}
+
+.focus text {
+    text-shadow: 0 3px 0 #fff, 3px 0 0 #fff, 0 -3px 0 #fff, -3px 0 0 #fff;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#main-wrapper {
+    font-family: 'Inconsolata', Monaco, "Lucida Console", Consolas, "Courier New";
+    overflow: hidden;
+}
+
+.clr {
+    clear: both;
+}
+
+#controls {
+    margin-left: 8px;
+    font-size: 18px;
+}
+
+#controls .sentence {
+    float: left;
+    padding: 0px 0 23px 0;
+}
+
+.bar rect {
+    stroke: #fff;
+    shape-rendering: crispEdges;
+}
+
+.bar rect.background {
+    fill: #eee;
+}
+
+/*.bar rect.percent {*/
+    /*fill: #a9b7ad;*/
+/*}*/
+
+.bar text {
+    font-size: 14px;
+    fill: #000;
+}
+
+.axis path {
+    fill: none;
+}
+
+.axis line {
+    stroke: #000;
+    stroke-width: 0.8;
+}
+
+.axis text {
+    font-size: 13px;
+}

@@ -1,0 +1,65 @@
+race,enroll,activities,duration
+1,3,Eating and Drinking,28.56
+1,3,Educational Activities,141.25
+1,3,Grooming,27.8
+1,3,Leisure and Sports,85.86
+1,3,Other,42.55
+1,3,Sleeping,271.95
+1,3,Traveling,17.46
+1,3,Working and related activities,129.19
+1,5,Eating and Drinking,33.99
+1,5,Educational Activities,124.49
+1,5,Grooming,31.5
+1,5,Leisure and Sports,90.84
+1,5,Other,38.02
+1,5,Sleeping,252.24
+1,5,Traveling,18.75
+1,5,Working and related activities,191.3
+2,3,Eating and Drinking,23.74
+2,3,Educational Activities,160.88
+2,3,Grooming,36.37
+2,3,Leisure and Sports,105.44
+2,3,Other,49.92
+2,3,Sleeping,266.56
+2,3,Traveling,18.28
+2,3,Working and related activities,203.75
+2,5,Eating and Drinking,32.91
+2,5,Educational Activities,142.49
+2,5,Grooming,37.57
+2,5,Leisure and Sports,103.58
+2,5,Other,43.33
+2,5,Sleeping,243.04
+2,5,Traveling,18.87
+2,5,Working and related activities,187.29
+3,3,Eating and Drinking,28.05
+3,3,Educational Activities,127.39
+3,3,Grooming,29.47
+3,3,Leisure and Sports,66.64
+3,3,Other,45.31
+3,3,Sleeping,250.05
+3,3,Traveling,17.58
+3,3,Working and related activities,42.33
+3,5,Eating and Drinking,32.26
+3,5,Educational Activities,146.44
+3,5,Grooming,32.16
+3,5,Leisure and Sports,79.85
+3,5,Other,38.92
+3,5,Sleeping,258.09
+3,5,Traveling,20.12
+3,5,Working and related activities,212.0
+4,3,Eating and Drinking,28.73
+4,3,Educational Activities,131.61
+4,3,Grooming,24.1
+4,3,Leisure and Sports,87.45
+4,3,Other,48.82
+4,3,Sleeping,266.73
+4,3,Traveling,15.12
+4,3,Working and related activities,187.25
+4,5,Eating and Drinking,39.02
+4,5,Educational Activities,144.58
+4,5,Grooming,29.39
+4,5,Leisure and Sports,90.75
+4,5,Other,49.15
+4,5,Sleeping,244.68
+4,5,Traveling,17.8
+4,5,Working and related activities,166.87

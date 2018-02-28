@@ -1,0 +1,236 @@
+---
+title: "Data Processing"
+output: html_document
+---
+
+Dataset: IPSUM USA 2012-2016
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+```
+
+```{r}
+data = read.csv('atus_00004.csv')
+options(scipen = 200)
+head(data)
+```
+
+```{r rename of data}
+usefuldata = data[,-c(3,4,5,14,16,18,20,22,28,29,30,31)]
+options(scipen = 200)
+names(usefuldata)[1] = "caseID"
+names(usefuldata)[2] = "survey_year"
+names(usefuldata)[3] = "age"
+names(usefuldata)[4] = "sex"
+names(usefuldata)[5] = "race"
+names(usefuldata)[6] = "edulevel"
+names(usefuldata)[7] = "enroll"
+names(usefuldata)[8] = "employ_stat"
+names(usefuldata)[9] = "retired"
+names(usefuldata)[10] = "age_of_mom"
+names(usefuldata)[11] = "race_of_mum"
+names(usefuldata)[12] = "edulevel_of_mom"
+names(usefuldata)[13] = "employ_stat_of_mom"
+names(usefuldata)[14] = "retired_mom"
+names(usefuldata)[15] = "activity"
+names(usefuldata)[16] = "duration_ext"
+names(usefuldata)[17] = "duration"
+names(usefuldata)[18] = "start"
+names(usefuldata)[19] = "stop"
+head(usefuldata)
+```
+
+0100 White only - 1
+0110 Black only - 2
+0120 American Indian, Alaskan Native - 3
+0130-0132 Asian only - 4
+
+```{r rename attribbutes}
+
+race_new = usefuldata$race
+race_new[] = 5#other races
+race_new[usefuldata$race == 100] = 1
+race_new[usefuldata$race == 110] = 2
+race_new[usefuldata$race == 120] = 3
+race_new[usefuldata$race >= 130 & usefuldata$race <= 132] = 4
+usefuldata$race = race_new
+
+sex = usefuldata$sex
+sex[] = 'others'
+sex[usefuldata$sex == 1] = 'male'
+sex[usefuldata$sex == 2] = 'female'
+usefuldata$sex = sex
+
+edulevel = usefuldata$edulevel
+edulevel[] = 'others'
+edulevel[usefuldata$edulevel == 10] = 'kingdergarden'
+edulevel[usefuldata$edulevel %in% 11:20] = 'high_school'
+edulevel[usefuldata$edulevel %in% 21:40] = 'college'
+usefuldata$edulevel = edulevel
+
+# enroll = usefuldata$enroll
+# enroll = 'others'
+# enroll[usefuldata$enroll == 1] = 'no_enroll'
+# enroll[usefuldata$enroll == 2] = 'high_school_pt'
+# enroll[usefuldata$enroll == 3] = 'high_school_ft'
+# enroll[usefuldata$enroll == 4] = 'college_pt'
+# enroll[usefuldata$enroll == 5] = 'college_ft'
+# usefuldata$enroll = enroll
+
+employ_stat = usefuldata$employ_stat
+employ_stat = 'others'
+employ_stat[usefuldata$employ_stat %in% 2:4] = 'not_at_work'
+employ_stat[usefuldata$employ_stat == 1] = 'at_work'
+usefuldata$employ_stat = employ_stat
+
+head(usefuldata)
+```
+
+```{r fig1 data write csv}
+
+fig1.data = usefuldata
+
+activity = usefuldata$activity
+activity[] = 'o'
+activity[usefuldata$activity %in% 10100:10199] = 's'
+#activity[usefuldata$activity %in% 30200:30299] = 'edu_with_children'
+#activity[usefuldata$activity %in% 50000:59999] = 'work'
+activity[usefuldata$activity %in% 60300:60399] = 'w'
+activity[usefuldata$activity %in% 60100:60199] = 'c'
+#activity[usefuldata$activity %in% 120000:129999] = 'leisure'
+#activity[usefuldata$activity %in% 120100:120299] = 'social'
+fig1.data$activity = activity
+
+fig1.data = fig1.data[fig1.data$race %in% 1:4,]
+fig1.data = fig1.data[fig1.data$enroll %in% c(3,5),]
+fig1.data = fig1.data[,c(1,5,7,15,17)]
+head(fig1.data)
+write.csv(fig1.data,"fig1_raw.csv")
+
+# fig1.summary = group_by(fig1.data,caseID)
+# fig1.summary = summarise(fig1.summary,
+#                          count = n(),
+#                          sum(duration))
+# head(fig1.summary)
+
+
+```
+
+```{r fig 2 data write csv}
+
+fig2.data = usefuldata
+
+activity = usefuldata$activity
+activity[] = 'Other'
+activity[usefuldata$activity %in% 10100:10199] = 'Sleeping'
+activity[usefuldata$activity %in% 10200:10299] = 'Grooming'
+activity[usefuldata$activity %in% 50000:59999] = 'Working and related activities'
+activity[usefuldata$activity %in% 60000:60999] = 'Educational Activities'
+activity[usefuldata$activity %in% 110100:119999] = 'Eating and Drinking'
+activity[usefuldata$activity %in% 120000:139999] = 'Leisure and Sports'
+activity[usefuldata$activity %in% 180000:189999] = 'Traveling'
+fig2.data$activity = activity
+
+fig2.data = fig2.data[fig2.data$race %in% 1:4,]
+fig2.data = fig2.data[fig2.data$enroll %in% c(3,5),]
+fig2.data = fig2.data[,c(1,5,7,15,17)]
+
+fig2.data = group_by(fig2.data,race,enroll,activity)
+fig2.data = summarise(fig2.data,
+                      avg_duration = round(mean(duration),2))
+
+head(fig2.data)
+write.csv(fig2.data,"fig2_raw.csv")
+```
+```{r fig2_2 data write csv}
+
+fig2_2.data = usefuldata
+
+activity = usefuldata$activity
+activity[] = 'Other'
+activity[usefuldata$activity %in% 10100:10199] = 'Sleeping'
+activity[usefuldata$activity %in% 10200:10299] = 'Grooming'
+activity[usefuldata$activity %in% 50000:59999] = 'Working and related activities'
+activity[usefuldata$activity %in% 60000:60999] = 'Educational Activities'
+activity[usefuldata$activity %in% 110100:119999] = 'Eating and Drinking'
+activity[usefuldata$activity %in% 120000:139999] = 'Leisure and Sports'
+activity[usefuldata$activity %in% 180000:189999] = 'Traveling'
+fig2_2.data$activity = activity
+
+fig2_2.data = fig2_2.data[fig2_2.data$race %in% 1:4,]
+fig2_2.data = fig2_2.data[fig2_2.data$enroll %in% c(3,5),]
+fig2_2.data = fig2_2.data[,c(1,5,7,15,17)]
+
+head(fig2_2.data)
+temp = unique(fig2_2.data$caseID)
+write.csv(fig2_2.data,"fig2_2_raw.csv")
+
+fig2_2.data = group_by(fig2_2.data,race,enroll,caseID)
+fig2_2.data = summarise(fig2_2.data,
+                      count = n())
+head(fig2_2.data)
+fig2_2.data = group_by(fig2_2.data,race,enroll)
+fig2_2.data = summarise(fig2_2.data,
+                      count = n())
+fig2_2.data
+```
+```{r fig2_3 data write csv}
+
+fig2_3.data = usefuldata
+
+activity = usefuldata$activity
+activity[] = 'Other'
+activity[usefuldata$activity %in% c(50000:59999,180500:180599)] = 'Working and related activities'
+activity[usefuldata$activity %in% 30000:30299] = 'Education with children'
+activity[usefuldata$activity %in% c(30300:39999,180301:180304)] = 'Other activities with children'
+fig2_3.data$activity = activity
+
+
+fig2_3.data = fig2_3.data[fig2_3.data$race %in% 1:4,]
+fig2_3.data = fig2_3.data[fig2_3.data$sex == 'female',]
+fig2_3.data = fig2_3.data[fig2_3.data$age %in% 25:45,]
+fig2_3.data = fig2_3.data[,c(1,5,7,15,17)]
+
+fig2_3.data$enroll = 0
+
+fig2_3.data
+temp = unique(fig2_3.data$caseID)
+
+write.csv(fig2_3.data,"fig2_3_raw.csv")
+fig2_3.data = group_by(fig2_3.data,race,caseID)
+fig2_3.data = summarise(fig2_3.data,
+                      count = n())
+fig2_3.data = group_by(fig2_3.data,race)
+fig2_3.data = summarise(fig2_3.data,
+                      count = n())
+fig2_3.data
+```
+
+
+
+variables: race,activity,duration
+```{r fig 3 data write csv}
+
+fig3.data = usefuldata
+
+activity = usefuldata$activity
+activity[] = 'Other'
+activity[usefuldata$activity %in% c(50000:59999,180500:180599)] = 'Working and related activities'
+activity[usefuldata$activity %in% 30000:30299] = 'Education with children'
+activity[usefuldata$activity %in% c(30300:39999,180301:180304)] = 'Other activities with children'
+fig3.data$activity = activity
+
+fig3.data = fig3.data[fig3.data$race %in% 1:4,]
+fig3.data = fig3.data[fig3.data$age %in% 25:45,]
+fig3.data = fig3.data[fig3.data$sex == 'female',]
+#fig3.data = fig3.data[,c(1,3,4,5,15,17)]
+fig3.data = fig3.data[,c(1,5,15,17)]
+
+fig3.data = group_by(fig3.data,race,activity)
+fig3.data = summarise(fig3.data,
+                      avg_duration = round(mean(duration),2))
+
+head(fig3.data)
+write.csv(fig3.data,"fig3_raw.csv")
+```

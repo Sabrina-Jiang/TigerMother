@@ -1,0 +1,130 @@
+a {
+    color: #6C6D6C;
+    text-decoration: none;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+img {
+    width: 100%;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.navigation-bar {
+    position: relative;
+}
+
+.navigation-bar > img {
+    margin-top: 60px;
+}
+
+.navigator {
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    background-color: #ffffff;
+
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+    justify-content: space-between;
+}
+
+.navigator > .col {
+    line-height: 60px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    padding: 0 2rem;
+
+    font-size: 1.3rem;
+
+    text-transform: uppercase;
+    color: #656665;
+}
+
+.nav-col-right > .col {
+    padding: 0 2rem;
+}
+
+.nav-col-right > .analysis > a {
+    color: #E7989E;
+}
+
+.nav-col-right > .analysis {
+    padding-right: 0;
+}
+
+.content {
+    padding-left: 2rem;
+}
+
+.content > h1 {
+    color: #8190b9;
+    text-transform: uppercase;
+    font-family: "Inconsolata", sans-serif;
+}
+
+.content p {
+    color: #6C6D6C;
+    font-family: "Inconsolata", sans-serif;
+}
+
+.content i.highlight {
+    color: #E7989E;
+    font-style: normal;
+}
+
+.content > .intent {
+    padding-left: 2rem;
+}
+
+.content > .marker-container > .row {
+    justify-content: space-between;
+}
+
+.content > .marker-container > .row > .marker {
+    width: 1rem;
+    height: 1rem;
+    margin-top: 1rem;
+}
+
+.content > .marker-container > .row > .marker {
+    background-color: #F29AB8;
+}
+
+.content > .marker-container > .row > .des {
+    width: calc(100% - 2rem);
+}
+
+.section-1 {
+    width: 100%;
+}
+
+.section-2 {
+    width: 100%;
+}
+
+.section-3 {
+    width: 100%;
+}
+
+.footer {
+    width: 100%;
+    background-color: #878887;
+    display: flex;
+}
+
+.footer > .col {
+    width: 50%;
+
+    color: #ffffff;
+
+    font-family: "Helvetica Neue", Arial, sans-serif;
+
+    padding: 3rem;
+    box-sizing: padding-box;
+}

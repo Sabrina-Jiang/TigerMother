@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="/assets/css/master.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/8.0.0/normalize.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="navigation-bar">
+        <div class="navigator flex-container">
+            <div class="col">student time use</div>
+            <div class="col flex-container nav-col-right">
+                <div class="col story"><a href="/index.html">story</a></div>
+                <div class="col analysis"><a href="/visualize.html">analysis</a></div>
+            </div>
+        </div>
+
+        <div class="float-container">
+            <div class="board">
+                <div style="font-size: 2.2rem">student time use</div>
+                <div class="clock">11:11:11</div>
+                <div class="qes">if <i class="hl">tiger mother</i> exist?</div>
+            </div>
+            <div class="button"><a href="/visualize.html">click to explore data</a></div>
+        </div>
+
+        <img src="/assets/img/banner1.png" alt="">
+    </div>
+
+    <div class="content">
+        <h1>background</h1>
+        <p>There is a common perception that Asian American parents are authoritarians when it comes to schoolwork and
+            extracurricular activities, and exceedingly demanding of their children both academically and at home.
+            Recently, these parents have been termed <i class="highlight">“tiger parents” (Chua, 2011)</i> for the
+            ferocity with which they discipline their children and for their emphasis on the importance of family
+            obligation and academic achievement.
+        </p>
+        <p>The current study uses data from American Time Use Survey to explore the time use of students and mothers
+            across ethnic groups.
+        </p>
+        <h1>goals</h1>
+        <p>How much time for homework?<br>
+            How students spent their time was working at job. <br>
+            Do Asian student spend more time studying than student of other ethnic groups? <br>
+            Do Asian mothers spend more time pushing their children to academic success? <br>
+            Do Asians coast when they get to college? <br>
+            Are Tiger Mothers more efficient? <br>
+            ...
+        </p>
+        <h1>data & methology</h1>
+        <p>To answer those question we focused our analysis on the time use of high school, college students and
+            mothers.
+        </p>
+        <div class="data-flow flex-container">
+            <div class="col">survey data</div>
+            <div class="col">data process</div>
+            <div class="col">category</div>
+        </div>
+        <div class="marker-container data-flow-des">
+            <div class="row flex-container survey-data-des hidden">
+                <div class="marker marker-pink"></div>
+                <div class="des">
+                    <p>We analyzed detailed data from the <i class="highlight">American Time Use Survey</i>. This U.S.
+                        government survey measures
+                        the time use of thousands of individuals based on time diaries, which are considered the most
+                        accurate way to measure time use. We concentrate on student individuals which enrolled in high
+                        school or college and mother individuals from 25 to 45 during 2011 to 2016.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row flex-container data-process-des hidden">
+                <div class="marker marker-pink"></div>
+                <div class="des">
+                    <p>Extracted from the original dataset, we use <i class="highlight">R and Python</i> to manipulate these data. We rename the
+                        name of variables, and give names to the code of categories. Wel go through the data and extract
+                        subsets from them by time and other attributes in order to group the data for visualizing them.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row flex-container category-des hidden">
+                <div class="marker marker-pink"></div>
+                <div class="des">
+                    <p><b>Student: </b>Educational Activities(includes do homework and take classes), Working and related
+                        activities, Eating and Drinking, Grooming, Traveling, Leisure and Sports, Sleeping,
+                        Other.<br/><br/>
+                        <b>Mother: </b>Children Care(includes education activities with children), Works and related
+                        activities, Others<br/><br/>
+                        <b>Race:</b> White, Black, Asian, American Indian, Alaskan Native
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer flex-container">
+        <div class="col">
+            <h3 class="title">Team Member</h3>
+            <p>
+                <br>Chenjie Jiang <br><br><br>
+                Chen Liang
+            </p>
+        </div>
+        <div class="col">
+            <h3 class="title">Reference</h3>
+            <p>
+                Screencast: https://youtu.be/HjtqwYC9DnI <br> <br>
+                Github: https://github.com/Sabrina-Jiang/DataVisFinal
+                <br><br>
+                Process Book: xxxxxxxxx
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+  let d = new Date()
+  const formatDate = t => t < 10 ? `0${t}` : t
+  $('.clock').text(`${formatDate(d.getHours())}:${formatDate(d.getMinutes())}:${formatDate(d.getSeconds())}`)
+
+  setInterval(() => {
+    let d = new Date()
+    $('.clock').text(`${formatDate(d.getHours())}:${formatDate(d.getMinutes())}:${formatDate(d.getSeconds())}`)
+  }, 1000)
+
+  $('.data-flow > .col').click(function (e) {
+    let target = $(e.target)
+    let text = target.text().replace(' ', '-')
+
+    $('.data-flow-des > div').addClass('hidden')
+    $('.data-flow > .col').removeClass('hl')
+    target.addClass('hl')
+    $(`.${text}-des`).removeClass('hidden')
+  })
+
+  $('.data-flow > .col')[0].click()
+</script>
+</html>

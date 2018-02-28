@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <title>Time Use</title>
+    <link rel="stylesheet" href="style/section2.css" type="text/css" media="screen"/>
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+    <!--<script src="//flowingdata.com/js/pym.min.js"></script>-->
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>
+
+
+    <script>
+      let originalWidth = 1000
+
+      function autoZoom () {
+        let ratio = $(window).width() / originalWidth
+        $('body').css('zoom', ratio)
+      }
+
+      $(document).ready(() => {
+        autoZoom()
+      })
+      $(window).on('resize', autoZoom)
+    </script>
+</head>
+
+<div id="main-wrapper">
+    <div id="notes">
+        <div id="demographics">
+            <div id="education">
+                <h3>Education Level</h3>
+                <div class="button current" data-val="3">High School</div>
+                <div class="button" data-val="5">College</div>
+            </div>
+            <div id="race">
+                <h3>Race</h3>
+                <div class="column">
+                    <div class="button current" data-val="1">White</div>
+                    <div class="button" data-val="2">Black</div>
+                </div>
+                <div class="column">
+                    <div class="button" data-val="3">Asian</div>
+                    <div class="button" data-val="4">America Indian</div>
+                </div>
+                <div class="clr"></div>
+            </div>
+            <!--<div class="clr"></div>-->
+        </div>
+    </div>
+    <div class="right">
+        <div id="chart"></div>
+        <div id="hours"></div>
+        <div id="chart-line"></div>
+    </div>
+</div>
+
+<body>
+<script src="js/barchart.js"></script>
+<script src="js/linechart.js"></script>
+</body>
+
+

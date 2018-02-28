@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+    <title>Time Use Simulation</title>
+    <link rel="stylesheet" href="style/section1.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7626174/696048/css/fonts.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<meta charset="utf-8">
+<style>
+    body {
+    }
+
+    .node {
+        stroke-width: 1.5px;
+    }
+
+</style>
+
+<script>
+  let originalWidth = 0
+  let rootWidth = 1050
+  let rootHeight = 500
+
+  function autoZoom () {
+    let ratio = $(window).width() / originalWidth
+    $('body').css('zoom', ratio)
+  }
+
+  $(document).ready(() => {
+    originalWidth = $(document).width()
+    autoZoom()
+  })
+  $(window).on('resize', autoZoom)
+
+</script>
+<body>
+<div id="main-wrapper">
+
+    <div id="current_time">4:00am</div>
+    <div class="controls">
+        <div id="control" style="float: left">
+            <!--<input type="image" src="img/reset.png" name="reset" class="button" id="reset"/>-->
+            <input type="image" src="img/play.png" name="play" class="button" style="display: none" id="play"
+                   onclick="playButtonDidClick()"/>
+            <input type="image" src="img/pause.png" name="pause" class="button" style="display: initial" id="pause"
+                   onclick="pauseButtonDidClick()"/>
+        </div>
+        <div id="speed">
+            <div class="togglebutton slow" data-val="slow">Slow</div>
+            <div class="togglebutton medium current" data-val="medium">Medium</div>
+            <div class="togglebutton fast" data-val="fast">Fast</div>
+            <div class="clr"></div>
+        </div>
+    </div>
+
+    <!--<div id="note">&nbsp;</div>-->
+
+    <div id="chart"></div>
+    <div class="clr"></div>
+</div>
+<!--<script src="js/d3-3-5-5.min.js"></script>-->
+<script src="/visualize/js/network.js"></script>
+</body>
